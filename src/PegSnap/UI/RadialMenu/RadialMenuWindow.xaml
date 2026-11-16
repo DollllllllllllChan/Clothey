@@ -1,0 +1,143 @@
+<Window x:Class="PegSnap.UI.RadialMenu.RadialMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Clothey Radial Menu"
+        Width="380" Height="380"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        WindowStartupLocation="Manual">
+    <Grid Width="380" Height="380">
+        <!-- Floating Ambient Glass Aura (Subtle soft backdrop blur aura, NO black disc!) -->
+        <Ellipse Width="340" Height="340"
+                 Fill="#14000000"
+                 HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Ellipse.Effect>
+                <BlurEffect Radius="30"/>
+            </Ellipse.Effect>
+        </Ellipse>
+
+        <!-- 4 FLOATING FROSTED GLASS PODS (Apple VisionOS / Fluent Glassmorphic Style) -->
+
+        <!-- Top Pod (North): Area Snip -->
+        <Border x:Name="SectorTopBorder"
+                Width="134" Height="76"
+                VerticalAlignment="Top" HorizontalAlignment="Center"
+                Margin="0,18,0,0" CornerRadius="22"
+                Background="#EB161926" BorderBrush="#33FFFFFF" BorderThickness="1.2"
+                Cursor="Hand" MouseDown="OnSectorMouseDown" Tag="AreaCapture">
+            <Border.Effect>
+                <DropShadowEffect x:Name="SectorTopShadow" BlurRadius="16" ShadowDepth="3" Color="#000000" Opacity="0.5"/>
+            </Border.Effect>
+            <Grid Margin="12,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="34"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Icon badge -->
+                <Border Grid.Column="0" Width="30" Height="30" CornerRadius="15" Background="#2038B6FF" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="✂" FontSize="15" Foreground="#38B6FF" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <!-- Texts -->
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="6,0,0,0">
+                    <TextBlock Text="Area Snip" FontSize="12" FontWeight="SemiBold" Foreground="#FFFFFF"/>
+                    <TextBlock Text="Drag Kotak" FontSize="9.5" Foreground="#94A3B8"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Right Pod (East): Screen Recording -->
+        <Border x:Name="SectorRightBorder"
+                Width="134" Height="76"
+                VerticalAlignment="Center" HorizontalAlignment="Right"
+                Margin="0,0,18,0" CornerRadius="22"
+                Background="#EB161926" BorderBrush="#33FFFFFF" BorderThickness="1.2"
+                Cursor="Hand" MouseDown="OnSectorMouseDown" Tag="ScreenRecording">
+            <Border.Effect>
+                <DropShadowEffect x:Name="SectorRightShadow" BlurRadius="16" ShadowDepth="3" Color="#000000" Opacity="0.5"/>
+            </Border.Effect>
+            <Grid Margin="12,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="34"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Width="30" Height="30" CornerRadius="15" Background="#20EF4444" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="⏺" FontSize="15" Foreground="#EF4444" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="6,0,0,0">
+                    <TextBlock Text="Record" FontSize="12" FontWeight="SemiBold" Foreground="#FFFFFF"/>
+                    <TextBlock Text="Mini Clip" FontSize="9.5" Foreground="#94A3B8"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Bottom Pod (South): Extract OCR -->
+        <Border x:Name="SectorBottomBorder"
+                Width="134" Height="76"
+                VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                Margin="0,0,0,18" CornerRadius="22"
+                Background="#EB161926" BorderBrush="#33FFFFFF" BorderThickness="1.2"
+                Cursor="Hand" MouseDown="OnSectorMouseDown" Tag="TextOcr">
+            <Border.Effect>
+                <DropShadowEffect x:Name="SectorBottomShadow" BlurRadius="16" ShadowDepth="3" Color="#000000" Opacity="0.5"/>
+            </Border.Effect>
+            <Grid Margin="12,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="34"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Width="30" Height="30" CornerRadius="15" Background="#2010B981" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="📄" FontSize="15" Foreground="#10B981" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="6,0,0,0">
+                    <TextBlock Text="Extract OCR" FontSize="12" FontWeight="SemiBold" Foreground="#FFFFFF"/>
+                    <TextBlock Text="Ke Clipboard" FontSize="9.5" Foreground="#94A3B8"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Left Pod (West): Full Window -->
+        <Border x:Name="SectorLeftBorder"
+                Width="134" Height="76"
+                VerticalAlignment="Center" HorizontalAlignment="Left"
+                Margin="18,0,0,0" CornerRadius="22"
+                Background="#EB161926" BorderBrush="#33FFFFFF" BorderThickness="1.2"
+                Cursor="Hand" MouseDown="OnSectorMouseDown" Tag="FullCapture">
+            <Border.Effect>
+                <DropShadowEffect x:Name="SectorLeftShadow" BlurRadius="16" ShadowDepth="3" Color="#000000" Opacity="0.5"/>
+            </Border.Effect>
+            <Grid Margin="12,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="34"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Width="30" Height="30" CornerRadius="15" Background="#208B5CF6" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="🖵" FontSize="15" Foreground="#8B5CF6" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="6,0,0,0">
+                    <TextBlock Text="Full Window" FontSize="12" FontWeight="SemiBold" Foreground="#FFFFFF"/>
+                    <TextBlock Text="Jendela Aktif" FontSize="9.5" Foreground="#94A3B8"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Minimalist Floating Glass Center Puck (Deadzone / Cancel Indicator) -->
+        <Border x:Name="CenterHubBorder" Width="72" Height="72"
+                CornerRadius="36"
+                Background="#EB121520"
+                BorderBrush="#EF4444" BorderThickness="1.5"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Cursor="Hand" ToolTip="Lepas F1 di sini atau klik untuk Batal (Cancel)"
+                MouseDown="OnCenterHubMouseDown">
+            <Border.Effect>
+                <DropShadowEffect x:Name="CenterHubShadow" BlurRadius="16" ShadowDepth="0" Color="#EF4444" Opacity="0.4"/>
+            </Border.Effect>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock x:Name="CenterIcon" Text="✕" FontSize="16" FontWeight="Bold" Foreground="#EF4444" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="StatusLabel" Text="Batal" FontSize="9" FontWeight="SemiBold" Foreground="#F87171" HorizontalAlignment="Center" Margin="0,1,0,0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

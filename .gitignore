@@ -1,0 +1,19 @@
+# Build & Publish outputs
+bin/
+obj/
+publish/
+
+# Visual Studio / IDE
+.vs/
+*.user
+*.suo
+*.sln.docstates
+
+# Logs & Scratch
+*.log
+err.log
+out.log
+scratch/
+
+# Local Agent Skills
+.agent/
