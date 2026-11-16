@@ -58,25 +58,21 @@ Aplikasi ini berjalan senyap di background tray dengan performa **60 FPS**, kons
 - Mengambil piksel fisik murni tanpa *DWM stretching blur*, menjamin teks dan gambar screenshot selalu tajam.
 - Layanan OCR terintegrasi menggunakan engine bawaan Windows 10/11 (`Windows.Media.Ocr.OcrEngine`).
 
-### 5. Integrasi ScApp Workspace Hub
-- Terdaftar langsung di [apps.json](file:///g:/Chandra/Aplikasi/ScApp/apps.json) pada **ScApp Hub**.
-- Dilengkapi custom 128×128 icon `custom_pegsnap.png`.
-- Dapat dijalankan langsung dari kartu ScApp Workspace Hub atau via System Tray.
-
 ---
 
-## 🛠️ Struktur Solusi
+## 🛠️ Struktur Proyek
 
 ```text
-PegSnap/
+Clothey/
 ├── PegSnap.sln
 ├── run.bat
-├── publish/
-│   └── PegSnap.exe                  # Standalone GUI Executable (No CMD console)
+├── assets/
+│   └── clothey_icon.png
 ├── src/
 │   └── PegSnap/
 │       ├── App.xaml / App.xaml.cs
-│       ├── PegSnap.csproj
+│       ├── PegSnap.csproj           # AssemblyName: Clothey
+│       ├── app.ico
 │       ├── app.manifest             # PerMonitorV2 High DPI Awareness
 │       ├── Core/
 │       │   ├── Win32/NativeMethods.cs
@@ -88,37 +84,27 @@ PegSnap/
 │       └── UI/
 │           ├── Clothesline/ClotheslineWindow.xaml (.cs)
 │           ├── Clothesline/PolaroidCardControl.xaml (.cs)
+│           ├── Clothesline/TextCardControl.xaml (.cs)
 │           ├── Snipping/SnippingWindow.xaml (.cs)
 │           ├── Preview/PreviewWindow.xaml (.cs)
 │           └── Tray/TrayIconManager.cs
 └── tests/
     └── PegSnap.Tests/
-        ├── PegSnap.Tests.csproj
-        ├── DampedHarmonicOscillatorTests.cs
-        ├── RadialMenuEngineTests.cs
-        ├── HotkeyTimingTests.cs
-        └── CaptureHelperTests.cs
 ```
 
 ---
 
-## 🚀 Cara Menjalankan
+## 🚀 Cara Menjalankan & Build
 
-### Melalui ScApp Workspace Hub
-Buka aplikasi **ScApp Hub**, klik kartu **PegSnap** untuk langsung menjalankannya.
+### 1. Langsung Pakai (Tanpa Install .NET SDK)
+Download `Clothey.exe` dari halaman [**Releases**](https://github.com/DollllllllllllChan/Clothey/releases), lalu klik dua kali untuk langsung menjalankannya di System Tray.
 
-### Melalui File Eksekusi Langsung
-Klik dua kali file:
-```text
-g:\Chandra\Aplikasi\SS\publish\PegSnap.exe
-```
-*Aplikasi langsung aktif di System Tray tanpa memunculkan jendela CMD hitam.*
-
-### Melalui Script
-Jalankan file [run.bat](file:///g:/Chandra/Aplikasi/SS/run.bat):
+### 2. Build dari Source (.NET 8 SDK)
 ```cmd
-.\run.bat
+dotnet build src\PegSnap\PegSnap.csproj -c Release
+dotnet publish src\PegSnap\PegSnap.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -o publish
 ```
+Lalu jalankan `.\run.bat` atau `publish\Clothey.exe`.
 
 ---
 
