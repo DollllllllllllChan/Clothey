@@ -4,7 +4,7 @@
 
 # Clothey ⚡🧺
 
-**Clothey** (sebelumnya *PegSnap*) adalah aplikasi desktop Windows native yang ultra-ringan, cepat, dan efisien yang dibangun menggunakan **C# .NET 8 WPF** (`net8.0-windows10.0.19041.0`). Mengusung estetika **Apple macOS / MacBook Minimalist** (obsidian frosted glass, macOS traffic light controls, Dynamic Island pills, dan kartu jemuran interaktif).
+**Clothey** adalah aplikasi desktop Windows native yang ultra-ringan, cepat, dan efisien yang dibangun menggunakan **C# .NET 8 WPF** (`net8.0-windows10.0.19041.0`). Mengusung estetika **Apple macOS / MacBook Minimalist** (obsidian frosted glass, macOS traffic light controls, Dynamic Island pills, dan kartu jemuran interaktif).
 
 Aplikasi ini berjalan senyap di background tray dengan performa **60 FPS**, konsumsi RAM sangat rendah (**~16 MB saat standby**, batas <50 MB), dan **zero CPU usage** saat idle.
 
